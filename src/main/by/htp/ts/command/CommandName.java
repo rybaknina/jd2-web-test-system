@@ -1,0 +1,10 @@
+package main.by.htp.ts.command;
+
+public enum CommandName {
+    AUTHORIZATION,
+    REGISTRATION,
+    LOCALIZATION,
+
+    GO_TO_SIGN_IN_PAGE, GO_TO_MAIN_PAGE, GO_TO_REGISTRATION_PAGE,
+    SIGN_OUT, GO_TO_TEST_PAGE, ADD_TEST, GO_TO_ADD_TEST_PAGE, START_TEST
+}
