@@ -18,7 +18,7 @@ import java.util.List;
 
 public class GoToTestPage implements Command {
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DAOException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServiceProvider provider = ServiceProvider.getInstance();
         TestService testService = provider.getTestService();
 

@@ -8,5 +8,5 @@ import java.util.List;
 public interface TestService {
     List<Test> listTests() throws ServiceException;
     void addTest(Test test) throws ServiceException;
-    List<Question> listQuestions(int test_id) throws ServiceException;
+    List<Question> listQuestions(int testId) throws ServiceException;
 }

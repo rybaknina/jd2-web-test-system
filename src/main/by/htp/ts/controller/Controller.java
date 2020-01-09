@@ -31,6 +31,7 @@ public class Controller extends HttpServlet {
             pool.initPoolData();
         } catch (ConnectionPoolException e) {
             LOGGER.log(Level.SEVERE,"Error init the connection.", e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -40,12 +41,7 @@ public class Controller extends HttpServlet {
 
         String commandName = request.getParameter(COMMAND_NAME);
         command = provider.getCommand(commandName);
-
-        try {
-            command.execute(request, response);
-        } catch (DAOException e) {
-            LOGGER.log(Level.SEVERE, "DAOException occur", e);
-        }
+        command.execute(request, response);
 
     }
 

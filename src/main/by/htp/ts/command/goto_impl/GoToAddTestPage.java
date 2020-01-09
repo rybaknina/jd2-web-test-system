@@ -14,7 +14,7 @@ import java.io.IOException;
 public class GoToAddTestPage implements Command {
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DAOException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession(false);
         session.setAttribute("goto_request", RequestParameter.ADD_TEST);
         if(session == null) {

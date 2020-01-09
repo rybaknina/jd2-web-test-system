@@ -15,11 +15,11 @@ import java.util.logging.Logger;
 
 public class SqlTestDAO implements TestDAO {
 
-    private static final Logger LOGGER = Logger.getLogger(SqlTestDAO.class.getName());
+    private static final Logger logger = Logger.getLogger(SqlTestDAO.class.getName());
     private static final String SELECT_TESTS = "select id, name, time from test where status = ?";
     private static final String INSERT_TEST = "insert into test (name, time, status) values(?, ?, ?)";
     private static final String SELECT_QUESTIONS = "select id, name, description from question";
-    private static ReentrantLock lock;
+    private static final ReentrantLock lock = new ReentrantLock();
 
     @Override
     public List<Test> listTests() throws DAOException {
@@ -41,10 +41,10 @@ public class SqlTestDAO implements TestDAO {
             }
 
         } catch (ConnectionPoolException e) {
-            LOGGER.log(Level.SEVERE, "ConnectionPoolException occur", e);
+            logger.log(Level.SEVERE, "ConnectionPoolException occur", e);
             throw new DAOException(e);
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "SQLException occur", e);
+            logger.log(Level.SEVERE, "SQLException occur", e);
             throw new DAOException(e);
         } finally {
             Controller.pool.closeConnection(connection,ps,rs);
@@ -60,7 +60,6 @@ public class SqlTestDAO implements TestDAO {
             connection = Controller.pool.takeConnection();
 
             connection.setAutoCommit(false);
-            lock = new ReentrantLock();
             lock.lock();
 
             ps = connection.prepareStatement(INSERT_TEST);
@@ -72,7 +71,7 @@ public class SqlTestDAO implements TestDAO {
             connection.commit();
 
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "SQLException occur", e);
+            logger.log(Level.SEVERE, "SQLException occur", e);
             try {
                 connection.rollback();
             } catch (SQLException e1) {
@@ -80,7 +79,7 @@ public class SqlTestDAO implements TestDAO {
             }
 
         } catch (ConnectionPoolException e) {
-            LOGGER.log(Level.SEVERE, "ConnectionPoolException occur", e);
+            logger.log(Level.SEVERE, "ConnectionPoolException occur", e);
             throw new DAOException(e);
         }
         finally {
@@ -89,7 +88,7 @@ public class SqlTestDAO implements TestDAO {
         }
     }
     @Override
-    public List<Question> listQuestions(int test_id) throws DAOException {
+    public List<Question> listQuestions(int testId) throws DAOException {
         Connection connection = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -108,10 +107,10 @@ public class SqlTestDAO implements TestDAO {
             }
 
         } catch (ConnectionPoolException e) {
-            LOGGER.log(Level.SEVERE, "ConnectionPoolException occur", e);
+            logger.log(Level.SEVERE, "ConnectionPoolException occur", e);
             throw new DAOException(e);
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "SQLException occur", e);
+            logger.log(Level.SEVERE, "SQLException occur", e);
             throw new DAOException(e);
         } finally {
             Controller.pool.closeConnection(connection,ps,rs);

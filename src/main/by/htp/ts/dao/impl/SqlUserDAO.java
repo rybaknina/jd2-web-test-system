@@ -12,8 +12,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SqlUserDAO implements UserDAO {
-    private static final Logger LOGGER = Logger.getLogger(SqlUserDAO.class.getName());
-    private static ReentrantLock lock;
+    private static final Logger logger = Logger.getLogger(SqlUserDAO.class.getName());
+    private static ReentrantLock lock = new ReentrantLock();
 
     private static final String INSERT_USER_SQL = "INSERT INTO user" + "  (email, password, name, lastname,birthday, role_id) VALUES " +
             " (?, ?, ?, ?, ?, ?);";
@@ -28,7 +28,6 @@ public class SqlUserDAO implements UserDAO {
             connection = Controller.pool.takeConnection();
 
             connection.setAutoCommit(false);
-            lock = new ReentrantLock();
             lock.lock();
 
             ps = connection.prepareStatement(INSERT_USER_SQL);
@@ -43,7 +42,7 @@ public class SqlUserDAO implements UserDAO {
             connection.commit();
 
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "SQLException occur", e);
+            logger.log(Level.SEVERE, "SQLException occur", e);
             try {
                 connection.rollback();
             } catch (SQLException e1) {
@@ -51,7 +50,7 @@ public class SqlUserDAO implements UserDAO {
             }
 
         } catch (ConnectionPoolException e) {
-            LOGGER.log(Level.SEVERE, "ConnectionPoolException occur", e);
+            logger.log(Level.SEVERE, "ConnectionPoolException occur", e);
             throw new DAOException(e);
         }
         finally {
@@ -70,9 +69,6 @@ public class SqlUserDAO implements UserDAO {
         try {
                 connection = Controller.pool.takeConnection();
 
-                lock = new ReentrantLock();
-                lock.lock();
-
                 ps = connection.prepareStatement(SELECT_USER_BY_EMAIL);
                 ps.setString(1, email);
                 ps.setString(2, password);
@@ -86,13 +82,12 @@ public class SqlUserDAO implements UserDAO {
                 }
 
         } catch (ConnectionPoolException e) {
-            LOGGER.log(Level.SEVERE, "ConnectionPoolException occur", e);
+            logger.log(Level.SEVERE, "ConnectionPoolException occur", e);
             throw new DAOException(e);
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "SQLException occur", e);
+            logger.log(Level.SEVERE, "SQLException occur", e);
             throw new DAOException(e);
         } finally {
-            lock.unlock();
             Controller.pool.closeConnection(connection,ps,rs);
         }
         return user;

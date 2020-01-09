@@ -13,7 +13,7 @@ public class User implements Serializable {
     private String name;
     private String lastname;
     private java.sql.Date birthday;
-    private int role_id;
+    private int roleId;
 
     public User() {
     }
@@ -23,31 +23,31 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public User(String email, String password, int role_id) {
+    public User(String email, String password, int roleId) {
         this.email = email;
         this.password = password;
-        this.role_id = role_id;
+        this.roleId = roleId;
     }
 
-    public User(String email, String password, String name, String lastname, java.sql.Date birthday, int role_id) {
+    public User(String email, String password, String name, String lastname, java.sql.Date birthday, int roleId) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.lastname = lastname;
         this.birthday = birthday;
-        this.role_id = role_id;
+        this.roleId = roleId;
     }
 
     public int getId() {
         return id;
     }
 
-    public int getRole_id() {
-        return role_id;
+    public int getRoleId() {
+        return roleId;
     }
 
-    public void setRole_id(int role_id) {
-        this.role_id = role_id;
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 
     public String getEmail() {
@@ -96,14 +96,14 @@ public class User implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return id == user.id &&
-                role_id == user.role_id &&
+                roleId == user.roleId &&
                 email.equals(user.email) &&
                 password.equals(user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, email, password, role_id);
+        return Objects.hash(id, email, password, roleId);
     }
 
     @Override
@@ -112,7 +112,7 @@ public class User implements Serializable {
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", role_id=" + role_id +
+                ", roleId=" + roleId +
                 '}';
     }
 }

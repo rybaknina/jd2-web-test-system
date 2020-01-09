@@ -31,9 +31,9 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public List<Question> listQuestions(int test_id) throws ServiceException {
+    public List<Question> listQuestions(int testId) throws ServiceException {
         try {
-            return this.testDAO.listQuestions(test_id);
+            return this.testDAO.listQuestions(testId);
         } catch (DAOException e) {
             throw new ServiceException(e);
         }

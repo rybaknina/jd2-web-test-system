@@ -9,5 +9,5 @@ import java.util.List;
 public interface TestDAO {
     List<Test> listTests() throws DAOException;
     void addTest(Test test) throws DAOException;
-    List<Question> listQuestions(int test_id) throws DAOException;
+    List<Question> listQuestions(int testId) throws DAOException;
 }
