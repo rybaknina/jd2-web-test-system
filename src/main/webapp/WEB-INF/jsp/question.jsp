@@ -46,14 +46,14 @@
                     <form action="controller" method="post">
                         <input type="hidden" name="command" value="localization" />
                         <input type="hidden" name="language" value="ru" />
-                        <a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.name.ru"/></a>
+                        <a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.text.ru"/></a>
                     </form>
                 </li>
                 <li class="nav-item">
                     <form action="controller" method="post">
                         <input type="hidden" name="command" value="localization" />
                         <input	type="hidden" name="language" value="en" />
-                        <a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.name.en"/></a>
+                        <a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.text.en"/></a>
                     </form>
                 </li>
             </ul>
@@ -78,6 +78,28 @@
         </div>
     </div>
 </nav>
-
+<table class="tg">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th><fmt:message key="question.label.text" bundle="${lang}" /></th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:set var="i" value="1" />
+    <c:forEach items="${listQuestions}" var="question">
+        <tr>
+            <td>${question.id}</td>
+            <td width="120">${question.text}</td>
+        </tr>
+        <c:set var="i" value="${i+1}" />
+    </c:forEach>
+    </tbody>
+</table>
+<div class="error">
+    <c:if test="${not empty param.errorMessage }">
+        <c:out value="${param.errorMessage}"></c:out>
+    </c:if>
+</div>
 </body>
 </html>

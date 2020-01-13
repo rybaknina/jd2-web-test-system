@@ -42,20 +42,20 @@
                     <form action="controller" method="post">
                         <input type="hidden" name="command" value="localization" />
                         <input type="hidden" name="language" value="ru" />
-                        <a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.name.ru"/></a>
+                        <a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.text.ru"/></a>
                     </form>
                 </li>
                 <li class="nav-item">
                     <form action="controller" method="post">
                         <input type="hidden" name="command" value="localization" />
                         <input	type="hidden" name="language" value="en" />
-                        <a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.name.en"/></a>
+                        <a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.text.en"/></a>
                     </form>
                 </li>
             </ul>
         </div>
         <%--<form action="controller" method="post">--%>
-            <%--<input type="hidden" name="command" value="go_to_registration_page" />--%>
+            <%--<input type="hidden" text="command" value="go_to_registration_page" />--%>
             <%--<a class="navbar-brand" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="entry.label.testsystem"/></a>--%>
         <%--</form>--%>
         <a class="navbar-brand" href="controller?command=go_to_registration_page"><fmt:message key="entry.label.testsystem" bundle="${lang}"/></a>
@@ -87,9 +87,9 @@
                         <form action="controller" method="post">
                             <input type="hidden" name="command" value="registration" />
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right"><fmt:message key="login.label.name" bundle="${lang}" /></label>
+                                <label for="text" class="col-md-4 col-form-label text-md-right"><fmt:message key="login.label.text" bundle="${lang}" /></label>
                                 <div class="col-md-6">
-                                    <input type="text" id="name" class="form-control" name="name" required autofocus>
+                                    <input type="text" id="text" class="form-control" name="text" required autofocus>
                                 </div>
                             </div>
 

@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Time;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.List;
 
 public class AddTestCommand implements Command {
@@ -26,7 +29,13 @@ public class AddTestCommand implements Command {
         session.setAttribute("goto_request", RequestParameter.ADD_TEST);
 
         String name = request.getParameter(RequestParameter.NAME);
-        Time time = Time.valueOf(request.getParameter(RequestParameter.TIME));
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+
+        String sTime = request.getParameter(RequestParameter.TIME);
+        LocalTime localTime = LocalTime.parse(sTime);
+        Time time = Time.valueOf(localTime);
+
         String status = request.getParameter(RequestParameter.STATUS);
 
         Test test = null;

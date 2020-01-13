@@ -18,7 +18,7 @@ public class SqlTestDAO implements TestDAO {
     private static final Logger logger = Logger.getLogger(SqlTestDAO.class.getName());
     private static final String SELECT_TESTS = "select id, name, time from test where status = ?";
     private static final String INSERT_TEST = "insert into test (name, time, status) values(?, ?, ?)";
-    private static final String SELECT_QUESTIONS = "select id, name, description from question";
+    private static final String SELECT_QUESTIONS = "select id, text from test_question where tests_id = ?";
     private static final ReentrantLock lock = new ReentrantLock();
 
     @Override
@@ -65,7 +65,7 @@ public class SqlTestDAO implements TestDAO {
             ps = connection.prepareStatement(INSERT_TEST);
             ps.setString(1, test.getName());
             ps.setTime(2, test.getTime());
-            ps.setString(3, String.valueOf(test.getStatus()));
+            ps.setString(3, test.getStatus());
             ps.executeUpdate();
 
             connection.commit();
@@ -92,18 +92,17 @@ public class SqlTestDAO implements TestDAO {
         Connection connection = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        List<Question> questions = new ArrayList<>();
+        List<Question> questionList = new ArrayList<>();
         try {
             connection = Controller.pool.takeConnection();
             ps = connection.prepareStatement(SELECT_QUESTIONS);
-          //  ps.setInt(1, test_id);
+            ps.setInt(1, testId);
             rs = ps.executeQuery();
             while (rs.next()) {
                 Question question = new Question();
                 question.setId(rs.getInt("id"));
-                question.setName(rs.getString("name"));
-                question.setDescription(rs.getString("description"));
-                questions.add(question);
+                question.setText(rs.getString("text"));
+                questionList.add(question);
             }
 
         } catch (ConnectionPoolException e) {
@@ -115,6 +114,6 @@ public class SqlTestDAO implements TestDAO {
         } finally {
             Controller.pool.closeConnection(connection,ps,rs);
         }
-        return questions;
+        return questionList;
     }
 }

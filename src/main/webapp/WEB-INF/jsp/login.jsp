@@ -41,16 +41,16 @@ pageEncoding="UTF-8"%>
                     <form action="controller" method="post">
                         <input type="hidden" name="command" value="localization" />
                         <input type="hidden" name="language" value="ru" />
-                        <button type="submit" class="btn-link"><fmt:message bundle="${lang}" key="local.lnk.name.ru"/></button>
-                        <%--<a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.name.ru"/></a>--%>
+                        <button type="submit" class="btn-link"><fmt:message bundle="${lang}" key="local.lnk.text.ru"/></button>
+                        <%--<a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.text.ru"/></a>--%>
                     </form>
                 </li>
                 <li class="nav-item">
                     <form action="controller" method="post">
                         <input type="hidden" name="command" value="localization" />
                         <input	type="hidden" name="language" value="en" />
-                        <button type="submit" class="btn-link"><fmt:message bundle="${lang}" key="local.lnk.name.en"/></button>
-                        <%--<a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.name.en"/></a>--%>
+                        <button type="submit" class="btn-link"><fmt:message bundle="${lang}" key="local.lnk.text.en"/></button>
+                        <%--<a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.text.en"/></a>--%>
                     </form>
                 </li>
             </ul>
@@ -65,8 +65,8 @@ pageEncoding="UTF-8"%>
                 <li class="nav-item">
                     <a href="controller?command=go_to_registration_page"><fmt:message key="entry.label.signup" bundle="${lang}"/></a>
                     <%--<form action="controller" method="post">--%>
-                        <%--<input type="hidden" name="command" value="go_to_registration_page" />--%>
-                      <%--<!--  <input	type="hidden" name="language" value="en" /> -->--%>
+                        <%--<input type="hidden" text="command" value="go_to_registration_page" />--%>
+                      <%--<!--  <input	type="hidden" text="language" value="en" /> -->--%>
                     <%--<a class="nav-link" href="#" onclick="parentNode.submit();"><fmt:message key="entry.label.signup" bundle="${lang}"/></a>--%>
                     <%--</form>--%>
                 </li>

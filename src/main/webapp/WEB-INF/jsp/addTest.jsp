@@ -39,14 +39,14 @@
                     <form action="controller" method="post">
                         <input type="hidden" name="command" value="localization" />
                         <input type="hidden" name="language" value="ru" />
-                        <a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.name.ru"/></a>
+                        <a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.text.ru"/></a>
                     </form>
                 </li>
                 <li class="nav-item">
                     <form action="controller" method="post">
                         <input type="hidden" name="command" value="localization" />
                         <input	type="hidden" name="language" value="en" />
-                        <a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.name.en"/></a>
+                        <a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.text.en"/></a>
                     </form>
                 </li>
             </ul>
@@ -80,16 +80,16 @@
                         <form action="controller" method="post">
                             <input type="hidden" name="command" value="add_test" />
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right"><fmt:message key="test.label.name" bundle="${lang}" /></label>
+                                <label for="text" class="col-md-4 col-form-label text-md-right"><fmt:message key="test.label.text" bundle="${lang}" /></label>
                                 <div class="col-md-6">
-                                    <input type="text" id="name" class="form-control" name="name" required autofocus>
+                                    <input type="text" id="text" class="form-control" name="text" required autofocus>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="time" class="col-md-4 col-form-label text-md-right"><fmt:message key="test.label.time" bundle="${lang}" /></label>
                                 <div class="col-md-6">
-                                    <input type="time" id="time" class="form-control" name="time" value="01:00" min="00:30" max="05:00" required>
+                                    <input type="text" id="time" class="form-control" name="time" pattern="([01]?[0-9]{1}|2[0-3]{1}):[0-5]{1}[0-9]{1}" value = "01:00" required>
                                 </div>
                             </div>
 

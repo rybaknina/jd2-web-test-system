@@ -10,14 +10,14 @@
 		<form action="controller" method="post">
 			<input type="hidden" name="command" value="localization" />
 			<input type="hidden" name="language" value="ru" />
-			<button type="submit" class="btn-link"><fmt:message bundle="${lang}" key="local.lnk.name.ru"/></button>
+			<button type="submit" class="btn-link"><fmt:message bundle="${lang}" key="local.lnk.text.ru"/></button>
 		</form>
 	</li>
 	<li class="nav-item">
 		<form action="controller" method="post">
 			<input type="hidden" name="command" value="localization" />
 			<input	type="hidden" name="language" value="en" />
-			<button type="submit" class="btn-link"><fmt:message bundle="${lang}" key="local.lnk.name.en"/></button>
+			<button type="submit" class="btn-link"><fmt:message bundle="${lang}" key="local.lnk.text.en"/></button>
 		</form>
 	</li>
 </ul>

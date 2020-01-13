@@ -47,14 +47,14 @@
                     <form action="controller" method="post">
                         <input type="hidden" name="command" value="localization" />
                         <input type="hidden" name="language" value="ru" />
-                        <a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.name.ru"/></a>
+                        <a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.text.ru"/></a>
                     </form>
                 </li>
                 <li class="nav-item">
                     <form action="controller" method="post">
                         <input type="hidden" name="command" value="localization" />
                         <input	type="hidden" name="language" value="en" />
-                        <a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.name.en"/></a>
+                        <a class="nav-link text-primary" href="#" onclick="parentNode.submit();"><fmt:message bundle="${lang}" key="local.lnk.text.en"/></a>
                     </form>
                 </li>
             </ul>
@@ -86,7 +86,7 @@
     <thead>
     <tr>
         <th>#</th>
-        <th><fmt:message key="test.label.name" bundle="${lang}" /></th>
+        <th><fmt:message key="test.label.text" bundle="${lang}" /></th>
         <th><fmt:message key="test.label.time" bundle="${lang}" /></th>
         <th></th>
     </tr>
@@ -102,6 +102,7 @@
                 <form action="controller" method="post">
                     <input type="hidden" name="command" value="start_test" />
                     <input type="hidden" name="test" value="${test}" />
+                    <input type="hidden" name="testId" value="${test.id}" />
                     <fmt:message key="local.lnk.starttest" bundle="${lang}" var="buttonValue" />
                     <input type="submit" class="btn btn-primary" value="${buttonValue}">
                 </form>
